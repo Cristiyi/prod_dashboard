@@ -1,0 +1,12 @@
+logs/*
+!.gitkeep
+node_modules/
+bower_components/
+data/
+pages/
+dist/
+.DS_Store
+.idea
+*.log
+.env
+*.out

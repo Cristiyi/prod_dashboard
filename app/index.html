@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="//www.ibm.com/favicon.ico">
+  <link rel="canonical" href="http://www.ibm.com/______">
+  <meta name="dcterms.date" content="YYYY-MM-DD">
+  <meta name="dcterms.rights" content="© Copyright IBM Corp. 2014">
+  <meta name="description" content="______">
+  <meta name="geo.country" content="US">
+  <meta name="keywords" content="______">
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blogs Dashboard</title>
+  <script>
+  digitalData = {
+    page: {
+      category: {
+        primaryCategory: "SB03"
+      },
+      pageInfo: {
+        effectiveDate: "2014-11-19",
+        expiryDate: "2015-11-19",
+        language: "en-US",
+        publishDate: "2014-11-19",
+        publisher: "IBM Corporation",
+        version: "v18",
+        ibm: {
+          contentDelivery: "ECM/Filegen",
+          contentProducer: "ECM/IConS Adopter ## - #synkey# - 11/19/2014 05:14:00 PM",
+          country: "US",
+          industry: "______",
+          owner: "Some Person/City/IBM",
+          owningPortal: "______",
+          siteID: "______",
+          subject: "______",
+          type: "CT###"
+        }
+      }
+    }
+  };
+  </script>
+  <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="//cdn.datatables.net/select/1.2.0/css/select.dataTables.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="js/lib/jquery.min.js"></script>
+  <script src="//1.www.s81c.com/common/stats/ida_stats.js"></script>
+  <script src="//1.www.s81c.com/common/v18/js/www.js"></script>
+  <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+  <script src="js/lib/date-dd-MMM-yyyy.js"></script>
+  <script src="js/lib/bundle.js"></script>
+  <script src="js/lib/clipboard.min.js"></script>
+  <script>
+  IBMCore.common.util.config.set({
+    masthead: {
+      type: "alternate",
+      sticky: {
+        enabled: false
+      }
+    }
+  });
+  </script>
+</head>
+
+<body id="ibm-com" class="ibm-type">
+  <div id="ibm-top" class="ibm-landing-page">
+    <!-- MASTHEAD_BEGIN -->
+    <div id="ibm-masthead" role="banner" aria-label="IBM">
+      <div id="ibm-mast-options">
+        <ul role="toolbar" aria-labelledby="ibm-masthead">
+          <li id="ibm-geo" role="presentation">
+            <a href="http://www.ibm.com/planetwide/select/selector.html">United States</a></li>
+        </ul>
+      </div>
+      <div id="ibm-universal-nav">
+        <div id="ibm-home"><a href="http://www.ibm.com/us-en/">IBM®</a></div>
+        <ul id="ibm-menu-links" role="toolbar" aria-label="Site map">
+          <li><a href="http://www.ibm.com/sitemap/us/en/">Site map</a></li>
+        </ul>
+        <div id="ibm-search-module" role="search" aria-labelledby="ibm-masthead">
+          <form id="ibm-search-form" action="http://www.ibm.com/Search/" method="get">
+            <p>
+              <label for="q"><span class="ibm-access">Search</span></label>
+              <input type="text" maxlength="100" value="" placeholder="Search" name="q" id="q" />
+              <input type="hidden" value="17" name="v" />
+              <input type="hidden" value="utf" name="en" />
+              <input type="hidden" value="en" name="lang" />
+              <input type="hidden" value="us" name="cc" />
+              <input type="submit" id="ibm-search" class="ibm-btn-search" value="Submit" />
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- MASTHEAD_END -->
+    <div>
+      <nav>
+        <a id="logo" href="" title=""><img src="./images/logo.png" alt="Blogs" /><span>ibm.com Blogs Dashboard</span></a>
+      </nav>
+      <div id="menu">
+        <div id="menuTest">
+          <div id="menuDiv">
+            <form class="ibm-column-form" method="post">
+              <p class="ibm-form-elem-grp">
+                <select id="switchVersion" data-width="100%">
+                  <option value="prod" selected>Production </option>
+                  <option value="pre">Pre-Production</option>
+                </select>
+              </p>
+            </form>
+            <p id="currentTime">
+              <span>Data current as of: </span>
+              <span></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <section>
+        <!-- Navigation -->
+        <div class="ibm-sitenav-menu-container" data-sticky="false">
+          <div class="ibm-sitenav-menu-list">
+            <ul role="menubar">
+              <li role="presentation" class="ibm-highlight">
+                <a role="menuitem" href="#">Overview</a>
+              </li>
+              <li role="presentation">
+                <a role="menuitem" href="#">Blogs</a>
+              </li>
+              <li role="presentation">
+                <a role="menuitem" href="#">Themes</a>
+              </li>
+              <li role="presentation">
+                <a role="menuitem" href="#">Posts</a>
+              </li>
+              <li role="presentation" class="ibm-haschildlist">
+                <span role="menuitem">Pages</span>
+                <ul role="menu">
+                  <li role="presentation"><a role="menuitem" href="#" data-cate="page">By Blog</a></li>
+                  <li role="presentation"><a role="menuitem" href="#">By Page</a></li>
+                </ul>
+              </li>
+              <li role="presentation" class="ibm-haschildlist">
+                <span role="menuitem">Plug-ins</span>
+                <ul role="menu">
+                  <li role="presentation"><a role="menuitem" href="#" data-cate="plugin">By Blog</a></li>
+                  <li role="presentation"><a role="menuitem" href="#">By Plug-in</a></li>
+                </ul>
+              </li>
+              <li role="presentation" class="ibm-haschildlist">
+                <span role="menuitem">Users</span>
+                <ul role="menu">
+                  <li role="presentation"><a role="menuitem" href="#" data-cate="user">By Blog</a></li>
+                  <li role="presentation"><a role="menuitem" href="#">By User</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Card -->
+        <div id="main">
+          <div class="card" id="card1">
+            <div class="hoverDiv"></div>
+            <div class="left">
+              <img src="./images/1w-icon.png" alt="">
+            </div>
+            <div class="right">
+              <p class="cardValue">loading...</p>
+              <p class="cardTitle">total</p>
+              <a class="showDetail">Show detail</a>
+            </div>
+          </div>
+          <div class="card" id="card2">
+            <div class="hoverDiv"></div>
+            <div class="left">
+              <img src="./images/2check-icon.png" alt="">
+            </div>
+            <div class="right">
+              <p class="cardValue">loading...</p>
+              <p class="cardTitle">standard and current</p>
+              <a class="showDetail">Show detail</a>
+            </div>
+          </div>
+          <div class="card" id="card3">
+            <div class="hoverDiv"></div>
+            <div class="left">
+              <img src="./images/3age-icon.png" alt="">
+            </div>
+            <div class="right">
+              <p class="cardValue">loading...</p>
+              <p class="cardTitle">avg most current post age</p>
+              <a class="showDetail">Show detail</a>
+            </div>
+          </div>
+          <div class="card" id="card4">
+            <div class="hoverDiv"></div>
+            <div class="left">
+              <img src="./images/4posts-icon.png" alt="">
+            </div>
+            <div class="right">
+              <p class="cardValue">loading...</p>
+              <p class="cardTitle">new in the last full week</p>
+              <a class="showDetail">Show detail</a>
+            </div>
+          </div>
+          <div class="card" id="card5">
+            <div class="hoverDiv"></div>
+            <div class="left">
+              <img src="./images/5plugin.png" alt="">
+            </div>
+            <div class="right">
+              <p class="cardValue">loading...</p>
+              <p class="cardTitle">approved</p>
+              <a class="showDetail">Show detail</a>
+            </div>
+          </div>
+          <div class="card" id="card6">
+            <div class="hoverDiv"></div>
+            <div class="left">
+              <img src="./images/6avatar-icon.png" alt="">
+            </div>
+            <div class="right">
+              <p class="cardValue">loading...</p>
+              <p class="cardTitle"></p>
+              <a class="showDetail">Show detail</a>
+            </div>
+          </div>
+          <div class="card" id="card7">
+            <div class="hoverDiv"></div>
+            <div class="left">
+              <img src="./images/7stack-pages.png" alt="">
+            </div>
+            <div class="right">
+              <p class="cardValue">loading...</p>
+              <p class="cardTitle">average live per blog</p>
+              <a class="showDetail">Show detail</a>
+            </div>
+          </div>
+          <div class="clearFloat"></div>
+        </div>
+        <!-- Table -->
+        <div id="table">
+          <h2>Blogs Detail</h2>
+          <div id="tableDiv">
+            <div class="hoverTDiv"></div>
+            <p id="tableLoading">
+              <span class="ibm-spinner"></span> Loading...
+            </p>
+            <!-- Table1: Blog-->
+            <div id="table1" class="tableDivChild">
+              <div class="actionArea">
+                <p class="ibm-button-link toggleFilter">
+                  <button type="button" class="ibm-btn-pri ibm-btn-gray-50 showFilter">Show filters</button>
+                </p>
+                <p class="ibm-button-link emailUsers">
+                  <button type="button" class="ibm-btn-pri ibm-btn-gray-50 disabled" data-widget="tooltip" title="To email users, first use the check boxes to select one or more blogs.">Email Users</button>
+                </p>
+              </div>
+              <div class="tableDivFilter">
+                <form id="table1FilterForm" class="ibm-column-form" method="post">
+                  <p class="ibm-form-elem-grp">
+                    <label>Filter by:</label>
+                    <select id="table1Filter1" class="table1Filter filter" data-width="30%">
+                      <option value="all" selected>Country (all)</option>
+                    </select>
+                    <select id="table1Filter2" class="table1Filter filter" data-width="30%">
+                      <option value="all" selected>Language (all)</option>
+                    </select>
+                    <select id="table1Filter3" class="table1Filter filter" data-width="30%">
+                      <option value="all" selected>Type (all)</option>
+                    </select>
+                  </p>
+                </form>
+              </div>
+              <table class="display" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>
+                      <input type="checkbox" class="selectAll" />
+                    </th>
+                    <th>Blogs</th>
+                    <th>Total posts</th>
+                    <th>Posts last 6 months</th>
+                    <th>Oldest post</th>
+                    <th>Most recent post</th>
+                    <th>Page views (30 days)</th>
+                    <th>Owner</th>
+                    <th>Country/ Language</th>
+                    <th>MU</th>
+                    <th>Type</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- Table2: Theme -->
+            <div id="table2" class="tableDivChild">
+              <div class="actionArea">
+                <p class="ibm-button-link toggleFilter">
+                  <button type="button" class="ibm-btn-pri ibm-btn-gray-50 showFilter">Show filters</button>
+                </p>
+                <p class="ibm-button-link emailUsers">
+                  <button type="button" class="ibm-btn-pri ibm-btn-gray-50 disabled" data-widget="tooltip" title="To email users, first use the check boxes to select one or more blogs.">Email Users</button>
+                </p>
+              </div>
+              <div class="tableDivFilter">
+                <form id="table2FilterForm" class="ibm-column-form" method="post">
+                  <p class="ibm-form-elem-grp">
+                    <label>Filter by:</label>
+                    <select id="table2FilterOp1" class="table2Filter filter" data-width="7%">
+                      <option value="equal" selected>=</option>
+                      <option value="notequal">≠</option>
+                    </select>
+                    <select id="table2Filter1" class="table2Filter filter" data-width="20%">
+                      <option value="all" selected>Theme (all)</option>
+                    </select>
+                    <select id="table2FilterOp2" class="table2Filter filter" data-width="7%">
+                      <option value="equal" selected>=</option>
+                      <option value="notequal">≠</option>
+                      <option value="more">>=</option>
+                      <option value="less">
+                        <=</option>
+                    </select>
+                    <select id="table2Filter2" class="table2Filter filter" data-width="20%">
+                      <option value="all" selected>Version (all)</option>
+                    </select>
+                    <select id="table2Filter3" class="table2Filter filter" data-width="20%">
+                      <option value="active" selected>Active themes</option>
+                      <option value="all">All (active, inactive)</option>
+                      <option value="inactive">Inactive themes</option>
+                    </select>
+                  </p>
+                </form>
+              </div>
+              <table class="display" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>
+                      <input type="checkbox" class="selectAll" />
+                    </th>
+                    <th>Blog</th>
+                    <th>Theme</th>
+                    <th>Version</th>
+                    <th>Active</th>
+                    <th>Stardard?</th>
+                    <th>Current?</th>
+                    <th>Stardard and current?</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- Table3: Day -->
+            <div id="table3" class="tableDivChild">
+              <table class="display" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Blog</th>
+                    <th>Age of most current post (days)</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- Table4: Post -->
+            <div id="table4" class="tableDivChild">
+              <div class="actionArea">
+                <p class="ibm-button-link emailUsers">
+                  <button type="button" class="ibm-btn-pri ibm-btn-gray-50 disabled" data-widget="tooltip" title="To email users, first use the check boxes to select one or more blogs.">Email Users</button>
+                </p>
+              </div>
+              <table class="display" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>
+                      <input type="checkbox" class="selectAll" />
+                    </th>
+                    <th>Blog</th>
+                    <th>Past 7 days</th>
+                    <th>Past 30 days</th>
+                    <th>Past 90 days</th>
+                    <th>Year to date</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- Table5: Plugin -->
+            <div id="table5" class="tableDivChild">
+              <div class="actionArea">
+                <p class="ibm-button-link toggleFilter">
+                  <button type="button" class="ibm-btn-pri ibm-btn-gray-50 showFilter">Show filters</button>
+                </p>
+              </div>
+              <div class="tableDivFilter">
+                <form id="table5FilterForm" class="ibm-column-form" method="post">
+                  <p class="ibm-form-elem-grp">
+                    <label>Filter by:</label>
+                    <select id="table5Filter1" class="table5Filter filter" data-width="20%">
+                      <option value="all" selected>Plug-in (all)</option>
+                    </select>
+                    <select id="table5Filter2" class="table5Filter filter" data-width="20%">
+                      <option value="all" selected>Blog (all)</option>
+                    </select>
+                    <select id="table5Filter3" class="table5Filter filter" data-width="15%">
+                      <option value="active" selected>Active</option>
+                      <option value="all">All (active, inactive)</option>
+                      <option value="inactive">Inactive</option>
+                    </select>
+                    <select id="table5Filter4" class="table5Filter filter" data-width="15%">
+                      <option value="all" selected>Status (all)</option>
+                    </select>
+                    <select id="table5Filter5" class="table5Filter filter" data-width="15%">
+                      <option value="approved" selected>Approved</option>
+                      <option value="all">All (approved, unapproved)</option>
+                      <option value="unapproved">Unapproved</option>
+                    </select>
+                  </p>
+                </form>
+              </div>
+              <table class="display" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Plug-in</th>
+                    <th>Blog</th>
+                    <th>Version</th>
+                    <th>Active</th>
+                    <th>Status</th>
+                    <th>Approved</th>
+                    <th>Update available</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- Table6: User -->
+            <div id="table6" class="tableDivChild">
+              <div class="actionArea">
+                <p class="ibm-button-link emailUsers">
+                  <button type="button" class="ibm-btn-pri ibm-btn-gray-50 disabled" data-widget="tooltip" title="To email users, first use the check boxes to select one or more blogs.">Email Users</button>
+                </p>
+              </div>
+              <table class="display" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>
+                      <input type="checkbox" class="selectAll" />
+                    </th>
+                    <th>Blog</th>
+                    <th>Author</th>
+                    <th>Subscribers</th>
+                    <th>Contributors</th>
+                    <th>Site Owners</th>
+                    <th>Administrators</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- Table7: Plug-in -->
+            <div id="table7" class="tableDivChild">
+              <div class="actionArea">
+                <p class="ibm-button-link toggleFilter">
+                  <button type="button" class="ibm-btn-pri ibm-btn-gray-50 showFilter">Show filters</button>
+                </p>
+              </div>
+              <div class="tableDivFilter">
+                <form id="table7FilterForm" class="ibm-column-form" method="post">
+                  <p class="ibm-form-elem-grp">
+                    <label>Filter by:</label>
+                    <select id="table7Filter1" class="table7Filter filter" data-width="20%">
+                      <option value="all" selected>Page (all)</option>
+                    </select>
+                    <select id="table7Filter2" class="table7Filter filter" data-width="20%">
+                      <option value="all" selected>Blog (all)</option>
+                    </select>
+                    <select id="table7Filter3" class="table7Filter filter" data-width="20%">
+                      <option value="all" selected>Status (all)</option>
+                    </select>
+                    <select id="table7Filter4" class="table7Filter filter" data-width="20%">
+                      <option value="all" selected>Templates (all)</option>
+                    </select>
+                  </p>
+                </form>
+              </div>
+              <table class="display" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>Page</th>
+                    <th>Blog</th>
+                    <th>Status</th>
+                    <th>Last update</th>
+                    <th>Templates</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- Table8: User -->
+            <div id="table8" class="tableDivChild">
+              <div class="actionArea">
+                <p class="ibm-button-link toggleFilter">
+                  <button type="button" class="ibm-btn-pri ibm-btn-gray-50 showFilter">Show filters</button>
+                </p>
+              </div>
+              <div class="tableDivFilter">
+                <form id="table8FilterForm" class="ibm-column-form" method="post">
+                  <p class="ibm-form-elem-grp">
+                    <label>Filter by:</label>
+                    <select id="table8FilterOp1" class="table8Filter filter" data-width="7%">
+                      <option value="equal" selected>=</option>
+                      <option value="notequal">≠</option>
+                    </select>
+                    <select id="table8Filter1" class="table8Filter filter" data-width="20%">
+                      <option value="all" selected>Blog (all)</option>
+                    </select>
+                    <select id="table8FilterOp2" class="table8Filter filter" data-width="7%">
+                      <option value="equal" selected>=</option>
+                      <option value="notequal">≠</option>
+                    </select>
+                    <select id="table8Filter2" class="table8Filter filter" data-width="20%">
+                      <option value="all" selected>Role (all)</option>
+                      <option value="administrator">Administrators</option>
+                      <option value="site_owner">Site Owners</option>
+                      <option value="contributor">Contributors</option>
+                      <option value="editor">Editor</option>
+                      <option value="subscriber">Subscribers</option>
+                    </select>
+                  </p>
+                </form>
+              </div>
+              <table class="display" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Blog</th>
+                    <th>Role</th>
+                    <th>User Name</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- Table9: Plug-in -->
+            <div id="table9" class="tableDivChild">
+              <table class="display" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>Plug-in</th>
+                    <th>Active</th>
+                    <th>Inactive</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <!-- Table10: Pages -->
+            <div id="table10" class="tableDivChild">
+              <table class="display" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>Blog</th>
+                    <th>Publish</th>
+                    <th>Unpublish</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div id="moreInfoDiv">
+        <div>
+          <p>
+            <a href="" target="blank"><img src="./images/openblog.png" alt="Blogs" />Open blog</a>
+          </p>
+          <p>
+            <a href="" target="blank"><img src="./images/wordpress.png" alt="Blogs" />Open in Wordpress</a>
+          </p>
+          <p>
+            <a><img src="./images/rawsource.png" alt="Blogs" />Raw Data</a>
+          </p>
+        </div>
+      </div>
+      <div id="emailUsersPopup">
+        <div>
+          <p>
+            <span class="ibm-input-group">
+                <input type="radio" class="ibm-styled-radio" id="allRolesPopup" name="allorspe" value="all" checked /> <label for="allRolesPopup">All Roles</label>
+                <br />
+                <input type="radio" class="ibm-styled-radio" id="speRolesPopup" name="allorspe" value="spe" /> <label for="speRolesPopup">Specific Roles</label>
+                <br />
+              </span>
+            <div id="speRolesPopupGroup">
+              <span class="ibm-input-group">
+                    <input data-init="false" class="ibm-styled-checkbox" id="authorRolePopup" name="typeInSpe" type="checkbox" value="Option A" /> <label for="authorRolePopup">Authors</label>
+                    <br /><input data-init="false" class="ibm-styled-checkbox" id="subRolePopup" name="typeInSpe" type="checkbox" value="Option B" /> <label for="subRolePopup">Subscribers</label>
+                    <br /><input data-init="false" class="ibm-styled-checkbox" id="conRolePopup" name="typeInSpe" type="checkbox" value="Option C" /> <label for="conRolePopup">Contributors</label>
+                    <br /><input data-init="false" class="ibm-styled-checkbox" id="siteRolePopup" name="typeInSpe" type="checkbox" value="Option D" /> <label for="siteRolePopup">Site Owners</label>
+                    <br /><input data-init="false" class="ibm-styled-checkbox" id="adminRolePopup" name="typeInSpe" type="checkbox" value="Option D" /> <label for="adminRolePopup">Administrators</label>
+                  </span>
+            </div>
+          </p>
+          <p class="ibm-button-link">
+            <button type="button" class="ibm-btn-pri ibm-btn-gray-50" id="sendEmailBtn">Send email</button>
+          </p>
+          <p>
+            <a href="javascript:;" target="" title="" id="copyEmailBtn" class="copyAddressBtn">Copy addresses</a>
+          </p>
+        </div>
+      </div>
+      <div id="rawData">
+      </div>
+      <div id="jsonContent">
+        <div id="jsonContentTitle">
+          <p>Raw Data</p>
+          <p class="ibm-icononly">
+            <a class="ibm-close-link ibm-textcolor-gray-80" href="javascript:;"></a>
+          </p>
+        </div>
+        <p id="loading"><span class="ibm-spinner"></span> loading...</p>
+        <div id="jsonRawDataArea"></div>
+      </div>
+      <div id="loadingMockupSpinner">
+        <div id="loadingMockup">
+        </div>
+        <div class="ibm-spinner"></div>
+        <div id="loadingText">LOADING</div>
+        <p class="ibm-ind-link"><a class="ibm-textcolor-blue-30" href="javascript:;">Retry</a></p>
+      </div>
+      <div class="ibm-common-overlay ibm-overlay-alt-two" data-widget="overlay" id="userDetailOverlay">
+        <h1 class="ibm-h2">Authors (23)</h1>
+        <div>
+        </div>
+        <div>
+          <p class="ibm-button-link">
+            <button type="button" class="ibm-btn-pri ibm-btn-gray-50" id="sendUserEmailBtn">Send email</button>
+          </p>
+          <p>
+            <a href="javascript:;" target="" title="" id="copyUserEmailBtn" class="copyAddressBtn">Copy addresses</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/calculate.js"></script>
+</body>
+
+</html>
