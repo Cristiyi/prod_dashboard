@@ -326,7 +326,7 @@ var prodDocUpdateJob = schedule.scheduleJob({ hour: 23, minute: 0 }, function() 
   prodAndPreBlogs(envType, dbType);
 });
 
-var preDocUpdateJob = schedule.scheduleJob({ hour: 16, minute: 51 }, function() {
+var preDocUpdateJob = schedule.scheduleJob({ hour: 23, minute: 30 }, function() {
   var envType = "pre";
   dbType = cloudant.db.use(cloudant.DBNamePreJob);
   prodAndPreBlogs(envType, dbType);
@@ -371,24 +371,11 @@ function prodAndPreBlogs(envType, dbType) {
 };
 
 function eachBlog(blogName, envType, dbType) {
-  if(envType == 'pre'){
-	var options = {
-		url: 'https://admin.blogs.' + envType + '.ibm.event.ibm.com/blogs/blogreport/'+blogName+'.json',
-		auth: {
-		user: "blogdashboard",
-		password: "NNZQVhLZ6jouqBZfCiNW7jIGlz3Fki"
-		},
-		method: 'GET',
-		dataType: "json",
-	}
-  } else {
-	var options = {
-		url: 'https://admin.blogs.' + envType + '.ibm.event.ibm.com/blogs/blogreport/'+blogName+'.json',
-		method: 'GET',
-		dataType: "json",
-	}  
-  }
-  request(options, function(error, response, result) {
+  request({
+    url: 'https://admin.blogs.' + envType + '.ibm.event.ibm.com/blogs/' + blogName + '/eiBlogInfo.json',
+    method: 'GET',
+    dataType: "json",
+  }, function(error, response, result) {
     if (!error && response.statusCode == 200) {
       if (result != '') {
         try {
